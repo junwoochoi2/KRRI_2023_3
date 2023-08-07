@@ -3,3 +3,5 @@ seaborn
 plotly
 chart_studio
 cufflinks
+numpy
+pandas
