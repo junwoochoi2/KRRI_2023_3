@@ -240,16 +240,16 @@ with tab1 :
     # Header of Specify Input Parameters
 
     #개선전후 공통정보
-    #st.subheader('■ 철도역사 기본정보 입력')
-    #basecon1, basecon2, basecon3, basecon4 = st.columns([0.5, 0.5, 0.5, 0.5])
-    #with basecon1 : 
-    #    Ground_base = st.select_slider('지하층유무', options=[0, 1])
-    #with basecon2 :   
-    #    Basement_base = st.select_slider('지상층유무_개선전', options=[0, 1])
-    #with basecon3 :     
-    #    Floor_base = st.select_slider('전체층규모_개선전', options=[1,2,3,4,5])
-    #with basecon4 :   
-    #    Occupied_floor_area_base = st.number_input('연면적(㎡)', 1000, 100000, 6000)
+    st.subheader('■ 철도역사 기본정보 입력')
+    basecon1, basecon2, basecon3, basecon4 = st.columns([0.5, 0.5, 0.5, 0.5])
+    with basecon1 : 
+        Ground_base = st.select_slider('지하층유무', options=[0, 1])
+    with basecon2 :   
+        Basement_base = st.select_slider('지상층유무_개선전', options=[0, 1])
+    with basecon3 :     
+        Floor_base = st.select_slider('전체층규모_개선전', options=[1,2,3,4,5])
+    with basecon4 :   
+        Occupied_floor_area_base = st.number_input('연면적(㎡)', 1000, 100000, 6000)
 
     # base 모델 streamlit 인풋
     st.caption(' ', unsafe_allow_html=False)
@@ -261,26 +261,26 @@ with tab1 :
         con1, con2, con3, con4 = st.columns([0.5, 0.5, 0.5, 0.5])
         # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
         with con1 : 
-            Ground = st.select_slider('지하층유무_개선전', options=[0, 1])
-            #Ground = Ground_base
+            #Ground = st.select_slider('지하층유무_개선전', options=[0, 1])
+            Ground = Ground_base
             ACH50 = st.number_input('침기율(ACH/50pa)_개선전', 0, 50, 25)
             Pump_efficiency = st.number_input('펌프효율_개선전', 0.0, 1.0, 0.7)
             
         with con2 : 
-            Basement = st.select_slider('지상층유무_개선전', options=[0, 1])
-            #Basement = Basement_base
+            #Basement = st.select_slider('지상층유무_개선전', options=[0, 1])
+            Basement = Basement_base
             Chiller_COP = st.number_input('냉동기(COP)_개선전', 4, 9, 6)
             heat_recover_effectiveness = st.number_input('전열교환효율_개선전', 0.0, 1.0, 0.7)
        
         with con3 : 
-            Floor = st.select_slider('전체층규모_개선전', options=[1,2,3,4,5])
-            #Floor = Floor_base
+            #Floor = st.select_slider('전체층규모_개선전', options=[1,2,3,4,5])
+            Floor = Floor_base
             Fan_total_efficiency = st.number_input('팬효율_개선전', 0.0, 1.0, 0.7)
             Lighting_power_density_ = st.number_input('조명밀도(W/㎡)_개선전', 3, 20, 7)
       
         with con4 :
-            Occupied_floor_area = st.number_input('연면적(㎡)_개선전', 1000, 100000, 6000)
-            #Occupied_floor_area = Occupied_floor_area_base
+            #Occupied_floor_area = st.number_input('연면적(㎡)_개선전', 1000, 100000, 6000)
+            Occupied_floor_area = Occupied_floor_area_base
             AHU_economiser = st.select_slider('AHU_이코노마이저 적용유무_개선전', options=[0, 1])     
             
             data = {'ACH50': ACH50,
@@ -310,27 +310,27 @@ with tab1 :
         con1, con2, con3, con4 = st.columns([0.5, 0.5, 0.5, 0.5])
             # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
         with con1 : 
-            Ground_2 = st.select_slider('지하층유무_개선후', options=[0, 1]) 
-            #Ground_2 = Ground_base
+            #Ground_2 = st.select_slider('지하층유무_개선후', options=[0, 1]) 
+            Ground_2 = Ground_base
             ACH50_2 = st.number_input('침기율(ACH/50pa)_개선후', 0, 50, 25)
             Pump_efficiency_2 = st.number_input('펌프효율_개선후', 0.0, 1.0, 0.7)
             
         with con2 : 
-            Basement_2 = st.select_slider('지상층유무_개선후', options=[0, 1])
-            #Basement_2 = Basement_base
+            #Basement_2 = st.select_slider('지상층유무_개선후', options=[0, 1])
+            Basement_2 = Basement_base
             Chiller_COP_2 = st.number_input('냉동기(COP)_개선후', 4, 9, 6)
             heat_recover_effectiveness_2 = st.number_input('전열교환효율_개선후', 0.0, 1.0, 0.7)
             
         with con3 :  
-            Floor_2 = st.select_slider('전체층규모_개선후', options=[1,2,3,4,5])   
-            #Floor_2 = Floor_base
+            #Floor_2 = st.select_slider('전체층규모_개선후', options=[1,2,3,4,5])   
+            Floor_2 = Floor_base
             Fan_total_efficiency_2 = st.number_input('팬효율_개선후', 0.0, 1.0, 0.7)
             Lighting_power_density__2 = st.number_input('조명밀도(W/㎡)_개선후', 3, 20, 7)
             
             
         with con4 :   
-            Occupied_floor_area_2 = st.number_input('연면적(㎡)_개선후', 1000, 100000, 6000)
-            #Occupied_floor_area_2 = Occupied_floor_area_base
+            #Occupied_floor_area_2 = st.number_input('연면적(㎡)_개선후', 1000, 100000, 6000)
+            Occupied_floor_area_2 = Occupied_floor_area_base
             AHU_economiser_2 = st.select_slider('AHU_이코노마이저 적용유무_개선후', options=[0, 1])
             
             data2 = {'ACH50_2': ACH50_2,
@@ -667,8 +667,8 @@ with tab2 :
         지역명 = ['서울','강릉', '광주', '대관령', '대구', '대전', '목포','부산', '서산', '원주', '인천', '전주', '청주', '추풍령', '춘천', '포항', '흑산도']
         지역 = st.selectbox('＊지역', 지역명)
 
-        area2 = st.number_input('＊연면적(㎡)', 1000, 100000, 6000)
-        #area2 = Occupied_floor_area_base
+        #area2 = st.number_input('＊연면적(㎡)', 1000, 100000, 6000)
+        area2 = Occupied_floor_area_base
         #st.caption("(전체 연면적을 입력)", unsafe_allow_html=False)
         
         air_ratio = st.number_input('＊공조면적비율(%)', 0, 100, 8)
