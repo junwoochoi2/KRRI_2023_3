@@ -2,5 +2,3 @@ scikit-learn
 seaborn
 plotly
 chart_studio
-cufflinks
-math
